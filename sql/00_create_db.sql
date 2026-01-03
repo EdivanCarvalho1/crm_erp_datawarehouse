@@ -8,10 +8,6 @@ Data: 2026-01-02
 ===========================================================
 */
 CREATE DATABASE crm_erp_dwh;
-
--- Conectar ao database no postgres (\c crm_erp_dwh)
-
--- Criar os schemas do data warehouse
 CREATE SCHEMA IF NOT EXISTS bronze;
 CREATE SCHEMA IF NOT EXISTS silver;
 CREATE SCHEMA IF NOT EXISTS gold;

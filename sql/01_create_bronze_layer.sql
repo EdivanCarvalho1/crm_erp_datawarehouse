@@ -1,3 +1,12 @@
+/*
+===========================================================
+    Script: 01_create_bronze_layer.sql
+    Descrição: Script para criar as tabelas da camada bronze do Data Warehouse CRM/ERP
+    Autor: Edivan Carvalho
+    Data: 2026-01-03
+===========================================================
+*/
+
 DROP TABLE IF EXISTS bronze.crm_cust_info;
 CREATE TABLE bronze.crm_cust_info (
     cst_id INT,

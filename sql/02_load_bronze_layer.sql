@@ -1,3 +1,12 @@
+/*
+===========================================================
+    Script: 02_load_bronze_layer.sql
+    Descrição: Stored Procedure para carregar dados nas tabelas da camada bronze do Data Warehouse CRM/ERP
+    Autor: Edivan Carvalho
+    Data: 2026-01-03
+===========================================================
+*/
+
 CREATE OR REPLACE PROCEDURE bronze.load_bronze_layer()
 LANGUAGE plpgsql
 AS $$
