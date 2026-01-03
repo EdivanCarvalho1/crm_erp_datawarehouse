@@ -4,6 +4,12 @@
     Descrição: Stored Procedure para carregar dados nas tabelas da camada bronze do Data Warehouse CRM/ERP
     Autor: Edivan Carvalho
     Data: 2026-01-03
+
+    Parâmetros: Nenhum
+    Retorno: Nenhum
+
+    Exemplo de uso:
+    CALL bronze.load_bronze_layer();
 ===========================================================
 */
 
