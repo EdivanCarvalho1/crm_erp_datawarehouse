@@ -1,9 +1,14 @@
 CREATE OR REPLACE PROCEDURE bronze.load_bronze_layer()
 LANGUAGE plpgsql
 AS $$
+DECLARE
+    start_date TIMESTAMP;
+    end_date TIMESTAMP;
 BEGIN
 
     RAISE NOTICE 'Iniciando o carregamento dos dados na camada bronze...';
+
+    start_date := clock_timestamp();
 
     TRUNCATE TABLE bronze.crm_cust_info;
     COPY bronze.crm_cust_info
@@ -54,6 +59,12 @@ BEGIN
         HEADER true,
         DELIMITER ','
     );
+
+    end_date := clock_timestamp();
+
+    RAISE NOTICE
+        'Duração do carregamento: % minutos',
+        ROUND(EXTRACT(EPOCH FROM (end_date - start_date)) / 60, 2);
 
     RAISE NOTICE 'Carregamento dos dados na camada bronze concluído com sucesso.';
 EXCEPTION
