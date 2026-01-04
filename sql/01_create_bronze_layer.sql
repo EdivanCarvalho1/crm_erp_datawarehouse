@@ -50,7 +50,7 @@ CREATE TABLE bronze.erp_cust_az12(
 DROP TABLE IF EXISTS bronze.erp_loc_a101;
 CREATE TABLE bronze.erp_loc_a101(
     cid VARCHAR(50),
-    ctry VARCHAR(50)
+    cntry VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS bronze.erp_px_cat_g1v2;
