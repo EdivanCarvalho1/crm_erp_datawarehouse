@@ -87,3 +87,5 @@ EXCEPTION
         RAISE WARNING 'Um erro ocorreu ao carregar dados na camada bronze: %', SQLERRM;
 END;
 $$;
+
+CALL bronze.load_bronze_layer();

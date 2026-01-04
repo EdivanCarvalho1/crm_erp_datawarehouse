@@ -1,3 +1,17 @@
+/*
+===========================================================
+    Script: 04_load_silver_layer.sql
+    Descrição: Stored Procedure para carregar dados nas tabelas da camada silver do Data Warehouse CRM/ERP
+    Autor: Edivan Carvalho
+    Data: 2026-01-03
+
+    Parâmetros: Nenhum
+    Retorno: Nenhum
+
+    Exemplo de uso:
+    CALL silver.load_silver_layer();
+===========================================================
+*/
 CREATE OR REPLACE PROCEDURE silver.load_silver_layer()
 LANGUAGE plpgsql
 AS $$
@@ -188,3 +202,5 @@ BEGIN
     RAISE NOTICE 'Duração total do carregamento da camada silver: % minutos', EXTRACT(MINUTE FROM batch_end_time - batch_start_time);
 END;
 $$;
+
+CALL bronze.load_bronze_layer();
