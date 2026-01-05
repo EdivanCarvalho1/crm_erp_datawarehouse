@@ -1,24 +1,24 @@
 /*
 ===============================================================================
-Quality Checks
+Verificações de Qualidade
 ===============================================================================
-Script Purpose:
-    This script performs quality checks to validate the integrity, consistency, 
-    and accuracy of the Gold Layer. These checks ensure:
-    - Uniqueness of surrogate keys in dimension tables.
-    - Referential integrity between fact and dimension tables.
-    - Validation of relationships in the data model for analytical purposes.
+Objetivo do Script:
+    Este script realiza verificações de qualidade para validar a integridade, 
+    consistência e precisão da camada Gold. Essas verificações garantem:
+    - Unicidade das chaves substitutas (surrogate keys) nas tabelas de dimensão.
+    - Integridade referencial entre tabelas fato e dimensão.
+    - Validação dos relacionamentos no modelo de dados para fins analíticos.
 
-Usage Notes:
-    - Investigate and resolve any discrepancies found during the checks.
+Notas de Uso:
+    - Investigue e resolva quaisquer inconsistências encontradas durante as verificações.
 ===============================================================================
 */
 
 -- ====================================================================
--- Checking 'gold.dim_customers'
+-- Verificando 'gold.dim_customers'
 -- ====================================================================
--- Check for Uniqueness of Customer Key in gold.dim_customers
--- Expectation: No results 
+-- Verificar Unicidade da Chave de Cliente em gold.dim_customers
+-- Expectativa: Nenhum resultado
 SELECT 
     customer_key,
     COUNT(*) AS duplicate_count
@@ -27,10 +27,10 @@ GROUP BY customer_key
 HAVING COUNT(*) > 1;
 
 -- ====================================================================
--- Checking 'gold.product_key'
+-- Verificando 'gold.product_key'
 -- ====================================================================
--- Check for Uniqueness of Product Key in gold.dim_products
--- Expectation: No results 
+-- Verificar Unicidade da Chave de Produto em gold.dim_products
+-- Expectativa: Nenhum resultado
 SELECT 
     product_key,
     COUNT(*) AS duplicate_count
@@ -39,13 +39,13 @@ GROUP BY product_key
 HAVING COUNT(*) > 1;
 
 -- ====================================================================
--- Checking 'gold.fact_sales'
+-- Verificando 'gold.fact_sales'
 -- ====================================================================
--- Check the data model connectivity between fact and dimensions
+-- Verificar a conectividade do modelo de dados entre fato e dimensões
 SELECT * 
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
 ON c.customer_key = f.customer_key
 LEFT JOIN gold.dim_products p
 ON p.product_key = f.product_key
-WHERE p.product_key IS NULL OR c.customer_key IS NULL  
+WHERE p.product_key IS NULL OR c.customer_key IS NULL;
